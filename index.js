@@ -158,12 +158,17 @@ function processContains(item,list,callback) {
  * [2] Invoking `processDuplicateFree` passing `[1,1,2,2,3]` and `(arr) => arr.length`,
  * should return 3.
 */
-function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */) {
-  /* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */
-}
+function processDuplicateFree(list, callback) {
 
-/////////////// HIGHER-ORDER ARRAY METHODS ///////////////
-/////////////// HIGHER-ORDER ARRAY METHODS ///////////////
+  let duplicateFreeList = list.reduce(function(accumulator, item) {
+    if(accumulator.indexOf(item) === -1) {
+      accumulator.push(item);
+    }
+    return accumulator;
+  }, [])
+
+    return callback(duplicateFreeList);
+}
 
 // A local community center is holding a fund raising 5k fun run and has invited
 // 50 small businesses to make a small donation on their behalf for some much needed
@@ -288,9 +293,9 @@ function counterMaker() {
 function counterMakerWithLimit(limit) {
   let count = -1;
   return function() {
-    it (limit === count) {
+    if (limit === count) {
       count = 0;
-    } else {
+     } else {
       count++;
     } return count;
     };
